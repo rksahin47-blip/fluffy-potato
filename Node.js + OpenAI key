@@ -1,0 +1,28 @@
+AP master key
+
+<!-- AI Generator App for Blogger -->  <div>  
+  <h3>AI Generator</h3>  
+  <input type="text" id="prompt" placeholder="Enter your prompt" style="width:300px;">  
+  <button onclick="generateAI()">Generate</button>  
+</div>  
+<div id="output" style="margin-top:10px; padding:5px; border:1px solid #ccc;"></div>  
+<script>  
+async function generateAI() {  
+  const prompt = document.getElementById("prompt").value;  
+  if(!prompt) return alert("Type something!");  
+  // 🔹 এখানে আপনার Master API public URL বসান  
+  const API_URL = "https://YOUR_PUBLIC_API_URL/ai";  
+  try {  
+    const response = await fetch(API_URL, {  
+      method: "POST",  
+      headers: {"Content-Type": "application/json"},  
+      body: JSON.stringify({type:"text", prompt})  
+    });  
+    const data = await response.json();  
+    document.getElementById("output").innerText = data.output_text || JSON.stringify(data);  
+  } catch(e) {  
+    document.getElementById("output").innerText = "Error: " + e.message;  
+  }  
+}  
+</script>  
+কেমন আসছে এটা কি এখন ব্যবহার করতে পারব 
